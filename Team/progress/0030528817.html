@@ -28,6 +28,8 @@ contact course staff.
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="css/content.css">
+<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/collapse.css">
 <!--[if IE 6]>
 <link href="default_ie6.css" rel="stylesheet" type="text/css" />
 <![endif]-->
@@ -50,21 +52,28 @@ contact course staff.
 		<!-- Instantiate "tools" needed for a page. Tools are premade functional blocks that can be used to build a page,
 			and include things such as a file lister (for listing out homework assignments or tutorials)
 		-->
-		<div id="content">
+		<div id="main-content">
             <h2>Progress Report for Mitch Arndt</h2>
             
             <h4>Week 1:</h4>
             <b>Date:</b> 27 August 2021<br>
-            <b>Total hours:</b> 12<br>
+            <b>Total hours:</b> 14<br>
             <b>Description of design efforts:</b>
-			<div id="week1"></div>
+			<button type="button" class="collapsible">View Collapsible Content</button>
+			<div class="content">
+				<div id="week1"></div>
+			</div>
             <br>
-
+			
             <h4>Week 2:</h4>
-            <b>Date:</b> -Enter today's date here-<br>
-            <b>Total hours:</b> -Enter the number of hours you worked this week here-<br>
-            <b>Description of design efforts:</b><br>
-            -Discuss your design efforts here. Remember to follow the guidelines presented in the Progress Report Policy, available <a href="https://engineering.purdue.edu/ece477/Course/Policies/">here</a>. This is a template entry; simply copy/paste this entry when doing progress reports each week.</br>
+            <b>Date:</b> 3 September 2021<br>
+            <b>Total hours:</b> 14<br>
+            <b>Description of design efforts:</b>
+			<button type="button" class="collapsible">View Collapsible Content</button>
+			<div class="content">
+				<div id="week2"></div>
+			</div>
+            <br>
                       
         </div>
 	
@@ -83,6 +92,23 @@ $(document).ready(function() {
 	$("#menu").load("navbar.html");
 	$("#footer").load("footer.html");
 	$("#week1").load("Team/progress/mitch/week1/index.html");
+	$("#week2").load("Team/progress/mitch/week2/index.html");
+
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+	console.log(coll)
+
+	for (i = 0; i < coll.length; i++) {
+		coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.display === "block") {
+			content.style.display = "none";
+			} else {
+			content.style.display = "block";
+			}
+		});
+	}
 });
 </script>
 </body>
