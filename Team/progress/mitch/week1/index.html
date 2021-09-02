@@ -1,0 +1,59 @@
+Prior to this week, I spent much of the summer doing R&D work with the Websocket
+Server. I created a project that would be the framework to be used for this
+Senior Design Project. I created an express server using NodeJS using the
+typescript language to help with keeping the project strongly typed. This is
+important not just for the debugging and development reasons, but also because
+it would make the programming experience closer to that of C/C++ which I knew
+would be more familiar with his teammates. This would allow for greater
+collaboration during the semester.
+<br />
+Once the express server was working, I added websocket endpoints to the server.
+A websocket allows for bidirectional communication between a client and server
+without the need for polling. This is helpful for keeping a real time
+communication during the game play where a client will make game move requests
+to the server and it is expected that the opposing player will be instantly
+updated with the results of this move. The websocket ensures that this can
+happen.
+<br />
+The next step was to create the game logic on the server. This logic was broken
+down into object oriented chunks. The breakdown for these classes can be seen
+below:
+<img
+  src="Team/progress/mitch/week1/img/game/Class_Diagram.svg"
+  alt="Game Class Diagram"
+/>
+with a more detailed description below:
+<img
+  src="Team/progress/mitch/week1/img/game/Class_Diagram_Detail.svg"
+  alt="Game Class Diagram Detail"
+/>
+The next stage was to start planning the entire system. I knew that we would
+need a WiFi module, a hosted server, a microcontroller to handle local game
+player interaction logic, and any peripherals for the user experience such as
+LEDs and speakers. During planning I created this schematic for envisioning the
+layout:
+<img
+  src="Team/progress/mitch/week1/img/system/Class_Diagram.svg"
+  alt="System Class Diagram Detail"
+/>
+Most of the microcontroller peripherals seemed relatively straight forward. The
+speaker could be driven by the DAC, the player moves could be read from a button
+matrix, the LEDs could be driver through a shift registered GPIO output. The
+main drawback/complication to this project was the sensing of the ships. This
+was a difficult problem because there is a large grid that needs to be monitored
+(8x8). Additionally, each boat needs to be detected as unique from another boat.
+It would cause many issues with the server logic if the game board wasn't able
+to provide the id of a ship at a specific location. The microcontroller would
+need to distinguish a battleship (four peg) boat from a submarine (three peg)
+ship. To solve this issue, I came up with the idea of using resistor dividers
+inside the boats to produce a unique analog voltage associated with them. The
+diagram below helps to illustrate this point.
+<img
+  src="Team/progress/mitch/week1/img/Ship_Position_Diagram.png"
+  alt="Ship Positioning Diagram"
+/>
+This method allows for the battleship to have a voltage of 1/5*Vdd and the
+submarine could be 2/5*Vdd. The microcontroller has 16 bit resolution which
+means that these kinds of intervals would be trivial to distinguish. The divider
+outputs could all be run through a network of analog multiplexers to drive the
+64 inputs down to 1 input for the ADC of the microcontroller.

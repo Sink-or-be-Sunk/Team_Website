@@ -1,0 +1,42 @@
+Building off the server code from last week. I set out to deploy the server to a
+public domain this week. I used a free hosting platform called Heroku to achieve
+this. I also set up GitHub integrations to create a CI/CD (Continuous
+Integration / Continuous Deployment). This means that whenever code is pushed up
+to the GitHub repository, it will check the code against a set of test cases
+that I wrote to ensure that no features were broken in the latest commit.
+<br />
+Additionally, I set up continuous deployment with Heroku. This means that
+whenever the main branch of the GitHub repository is changed/pushed, the new
+code will be pushed to Heroku's servers to deploy the new app. This means that
+to change the code that is hosted on the public server, I simply have to perform
+a git push from my machine. The hosted site can be found at
+<a href="http://sink-or-be-sunk.herokuapp.com/">Sink or be Sunk</a>. NOTE:
+please don't make an account at this point as the user profile database code is
+still being updated and would therefore create an invalid profile. Basically by
+not making an account you are saving me from going in a manually deleting your
+account from the database in the future. A preview of the of the server pages
+can be seen here:
+<img
+  src="Team/progress/mitch/week2/img/AccountPage.png"
+  alt="Website Account Page"
+/>
+<img
+  src="Team/progress/mitch/week2/img/Homepage
+  .png"
+  alt="Website Account Page"
+/>
+Some features to the site this week all revolve around the new backend database
+for the site that will hold the user information needed for linking up your
+account to the game console board. These integrations include adding the
+database itself (this is a mongo db document database) and adding a mail client
+for the Contact page as well as password recovery, (see images below)
+<img
+  src="Team/progress/mitch/week2/img/ContactPage
+  .png"
+  alt="Website Contact Page"
+/>
+<img
+  src="Team/progress/mitch/week2/img/Email.png
+  .png"
+  alt="Email Response"
+/>
