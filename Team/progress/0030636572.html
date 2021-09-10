@@ -72,7 +72,25 @@ contact course staff.
 			<p><img src="Team/progress/molly/an_mux_part.jpg" width="500" height="200"></img></p>
 			<p><img src="Team/progress/molly/dig_mux_test.jpg" width="300" height="300"></img></p>
 			Throughout this week, our team was tasked with completing the Functional Specification document; I was responsible for completing the Other Constraints portion. For this portion, I highlighted elements of our game that fall outside the typical Mechanical, Electronic, and Economic constraints. This narrowed my focus on user interfacing. I brainstormed high-level constraint ideas with the team, some of which were later applied in the other constraint categories. From there, I further explained these constraints and provided evidence towards a potential health hazard of too much LED exposure on the eyes. Going forward, it is critical for our team to consider these constraints in order to optimize gameplay engagement for our targeted audience. From our Functional Specification document, I learned more about the arrangement of the ESP32 channels, particularly because I was also working to better understand the constraints of multiplexing our boat pegs into a suitable number of signals for the ADC. Further, this helped me understand the pin constraints of the ESP32; in the future we will need to identify how many of the channels on the ESP32 can be saved for the ship detection based on how many pins we will need for GPIO, PWM, DAC, and so on. Looking ahead, the goals for next week will be to further my understanding of KiCad by watching tutorials and creating simple schematics. This will be beneficial during PCB planning. <br>
-        </div>
+        
+			<br>
+		
+			<h4>Week 3:</h4>
+            <b>Date:</b> 9/10/2021 <br>
+            <b>Total hours:</b> 10 <br>
+            <b>Description of design efforts:</b><br>
+			In the beginning of this week, the analog multiplexers I ordered arrived and I was able to jump into testing. Initially, I tested the functionality of the device by placing only one voltage dividers to the Y0 pin and grounding the three select lines. This not only assured me of the functionality of the chip, but also demonstrated the accuracy of the chip (which was within 15% of the expected output). From here, I continued testing by migrating the voltage divider to the other output pins and manipulating the select line values. One of my concerns about the analog multiplexers was going to be the precision required for the select lines; upon further review and testing the select line, 70% of the Vcc value and above is identifies as “High”, and 30% of Vcc and lower identifies as “low”. This provides more flexibility than I had predicted and will become extremely beneficial when progressing to debugging stages, as we will be able to adjust the supply voltages with resistors to fit according. Once I had a solidified understanding of the singular analog multiplexer, I added a secondary multiplexer to imitate a second row on the player’s ship-placing board. Moreover, taking this extra step helped me visualize the layout of the final game board. Overall, it was critical to have a sound understanding of the analog multiplexers, their capabilities, and their constraints. As we progress into the next steps of circuitry and PCB design, our team will be able to better predict the functionality of the multiplexers, and thus the overall ship detection aspect of our game. </br></br>
+			<p><img src="Team/progress/molly/an_mux_2row_test.jpg" width="600" height="250"></img></p>
+
+			<p><img src="Team/progress/molly/boat1.jpg" width="600" height="400"></img></p>
+			<p><img src="Team/progress/molly/boat2.jpg" width="600" height="400"></img></p>
+            <br>
+		
+		
+		
+		
+		
+		</div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
 		<div id="footer"></div>
