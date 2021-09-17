@@ -1,0 +1,100 @@
+This week I had two main focuses: Finalizing the hardware design with the
+Electrical Overview homework, and creating a friend request feature on the
+server. For the hardware design one of the biggest issues/concerns is the power
+draw. we want to make this a portable device which requires that everything
+operate on battery power. Quickly, it became apparent that the 128 RGB LEDs that
+we planned for our design would be a challenge. Eventually, we were able to find
+low power, addressable LEDs that only sip 5mA of current at full brightness.
+This was a shocking change from the original device that we considered that
+required a minium of 60mA.
+<br />
+
+<h2>Hardware Design:</h2>
+<a href="Team/progress/mitch/week4/img/speaker_circuit.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week4/img/speaker_circuit.png"
+    alt="Speaker KiCad Circuit"
+  />
+</a>
+
+While working on the circuit design, it was helpful to start creating the KiCad
+schematic. An example of the speaker amplifier circuit can be seen above. This
+circuit provides a basic volume control through the potentiometer.
+<br />
+
+<h2>Friend Request:</h2>
+<a href="Team/progress/mitch/week4/img/Requested.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week4/img/Requested.png"
+    alt="Friend Request"
+  />
+</a>
+<a href="Team/progress/mitch/week4/img/Pending.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week4/img/Pending.png"
+    alt="Friend Pending"
+  />
+</a>
+<a href="Team/progress/mitch/week4/img/Friends.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week4/img/Friends.png"
+    alt="Friend Success"
+  />
+</a>
+As mentioned previously, the largest chunk of my time this week work working on
+the friends feature. This feature is fundamental for using the device as it
+allows for players to manage who they are able to play with their game console.
+Without this feature, players would be restricted to a random match making
+system. As any game is a social experience, it was very important to get this
+feature working early. The friend system expands on the groundwork of the
+database that I started last week. Each user has a list of friend documents in
+the Mongo database. These documents hold information on who requested the friend
+request and what the current status of the request is. Shown above is screenshot
+of the requested, pending, and accepted stages of the friend request.
+<br />
+<a
+  style="display: block; margin-left: auto; margin-right: auto; width: 30%"
+  href="Team/progress/mitch/week4/img/Board_Registration_Sequence_Diagram.svg"
+>
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week4/img/Board_Registration_Sequence_Diagram.svg"
+    alt="Device Pairing Sequence Diagram"
+  />
+</a>
+<br />
+Once two users are friends, the ESP32 game console can make a request to the
+websocket server for a list of a user's friends. From there, (this is a plan for
+the future) the microcontroller will display the list of friends on the LCD
+display. The user will then be able to choose the friend they want to play from
+their game console and initiate a game request.
+
+<br />
+<h2>Device Pairing:</h2>
+<a href="Team/progress/mitch/week4/img/DevicePairing.gif">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week4/img/DevicePairing.gif"
+    alt="Device Pairing"
+  />
+</a>
+
+The final mini project that I worked on this week was with the initial
+connection of a ESP32 device to a user's account. To accomplish this, I created
+a /connect route on the server to handle pairing requests. Above is a short
+example of how this process works. A user is able to find their device by the
+wifi ssid that the device is connected to. From there, they click the connect
+button which initiates the pairing process with this board. The board then sends
+back a confirm message after the user has clicked a button to confirm that they
+have physical access to the board. Once this happens, the deviceID is now linked
+to your account. This device ID now shows up in the user's profile page.
