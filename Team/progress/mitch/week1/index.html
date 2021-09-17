@@ -18,6 +18,7 @@ happen.
 The next step was to create the game logic on the server. This logic was broken
 down into object oriented chunks. The breakdown for these classes can be seen
 below:
+<br />
 <a href="Team/progress/mitch/week1/img/game/Class_Diagram.svg">
   <img
     class="clickable"
@@ -27,6 +28,7 @@ below:
   />
 </a>
 with a more detailed description below:
+<br />
 <a href="Team/progress/mitch/week1/img/game/Class_Diagram_Detail.svg">
   <img
     class="clickable"
@@ -40,6 +42,7 @@ need a WiFi module, a hosted server, a microcontroller to handle local game
 player interaction logic, and any peripherals for the user experience such as
 LEDs and speakers. During planning I created this schematic for envisioning the
 layout:
+<br />
 <a href="Team/progress/mitch/week1/img/system/Class_Diagram.svg">
   <img
     class="clickable"
@@ -60,6 +63,7 @@ need to distinguish a battleship (four peg) boat from a submarine (three peg)
 ship. To solve this issue, I came up with the idea of using resistor dividers
 inside the boats to produce a unique analog voltage associated with them. The
 diagram below helps to illustrate this point.
+<br />
 <a href="Team/progress/mitch/week1/img/Ship_Position_Diagram.png">
   <img
     class="clickable"
@@ -73,3 +77,4 @@ submarine could be 2/5*Vdd. The microcontroller has 16 bit resolution which
 means that these kinds of intervals would be trivial to distinguish. The divider
 outputs could all be run through a network of analog multiplexers to drive the
 64 inputs down to 1 input for the ADC of the microcontroller.
+<br />

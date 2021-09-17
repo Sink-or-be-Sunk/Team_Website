@@ -1,51 +1,58 @@
-<h2>Sink or be Sunk</h2>
-<h3>Team Members:</h3>
-<ul>
-  <li>Mitch Arndt</li>
-  <li>Molly Arito</li>
-  <li>Garrett Brillhart</li>
-  <li>Joe Mislansky</li>
-</ul>
 <h2>Project Overview:</h2>
-The goal of this project is to create the most engaging and socially distanced
-version of Battleship, our team has conceptualized a variety of ways to enhance
-the game experience while keeping its integrity. The first obstacle is to
-maintain social distancing. Our team plans to implement a connection between two
-battery-powered boards via WIFI from the ESP32 and web sockets, allowing for
-optimal and adjustable distancing. We will use a server to host the code for the
-gameplay logic, which validates legal plays on both boards. To reinvigorate
-gameplay, our team will engage with the players through touch, sight, and sound.
-Players will firmly place or lock-in, their boats on the boards at the beginning
-of the game and place pegs into their opponent’s board to simulate missiles or
-torpedoes (depending on gameplay selection). For each “attack”, LEDs
-corresponding to hits or misses will flash on both players’ boards, creating a
-stronger visual appeal. When a boat is decimated, each setup will vibrate and
-audibly announce which boat has sunk, which will not only keep players
-interested but reproduce the incentive to win. Finally, to put a spin on the
-traditional playing style, we will create a variety of game modes. These
-different modes will allow players to play casually or competitively, quickly,
-or for longevity. The various play options will further player interest simply
-by allowing the players to play towards an objective of their choice.
+<div class="justify">
+  The goal of this project is to create the most engaging and socially distanced
+  version of Battleship, our team has conceptualized a variety of ways to
+  enhance the game experience while keeping its integrity. The first obstacle is
+  to maintain social distancing. Our team plans to implement a connection
+  between two battery-powered boards via WIFI from the ESP32 and web sockets,
+  allowing for optimal and adjustable distancing. We will use a server to host
+  the code for the gameplay logic, which validates legal plays on both boards.
+  To reinvigorate gameplay, our team will engage with the players through touch,
+  sight, and sound. Players will firmly place or lock-in, their boats on the
+  boards at the beginning of the game and place pegs into their opponent’s board
+  to simulate missiles or torpedoes (depending on gameplay selection). For each
+  “attack”, LEDs corresponding to hits or misses will flash on both players’
+  boards, creating a stronger visual appeal. When a boat is decimated, each
+  setup will vibrate and audibly announce which boat has sunk, which will not
+  only keep players interested but reproduce the incentive to win. Finally, to
+  put a spin on the traditional playing style, we will create a variety of game
+  modes. These different modes will allow players to play casually or
+  competitively, quickly, or for longevity. The various play options will
+  further player interest simply by allowing the players to play towards an
+  objective of their choice.
+</div>
 
 <h2>Project Specific Success Criteria:</h2>
 <ol>
   <li>
     PSSC #1: An ability to detect when a user positions their ship pieces on the
-    game board
+    game board.
   </li>
-  <li>
+  <!-- <li>
     PSSC #2: An ability to relay game information to a player’s game boards via
     a WIFI connection.
+  </li> -->
+  <li>
+    PSSC #2: An ability to provision a WiFi connection through a Bluetooth BLE
+    connection to a user’s smartphone.
   </li>
   <li>
     PSSC #3: An ability to light individual LEDs in a matrix in response to game
-    events
+    events.
   </li>
-  <li>
+  <!-- <li>
     PSSC #4: An ability to control the flow of gameplay on a WebSocket server.
-  </li>
+  </li> -->
   <li>
+    PSSC #4: An ability to relay game move information between players over a
+    WebSocket Server connection.
+  </li>
+  <!-- <li>
     PSSC #5: An ability to monitor the charge level of the game board’s battery
     through a visual led indicator.
+  </li> -->
+  <li>
+    PSSC #5: An ability to provide physical feedback to a user with a rumble
+    motor when a ship is sunk.
   </li>
 </ol>

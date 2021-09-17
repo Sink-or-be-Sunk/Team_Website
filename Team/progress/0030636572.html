@@ -77,14 +77,22 @@ contact course staff.
 		
 			<h4>Week 3:</h4>
             <b>Date:</b> 9/10/2021 <br>
-            <b>Total hours:</b> 10 <br>
+            <b>Total hours:</b> 15 <br>
             <b>Description of design efforts:</b><br>
 			In the beginning of this week, the analog multiplexers I ordered arrived and I was able to jump into testing. Initially, I tested the functionality of the device by placing only one voltage dividers to the Y0 pin and grounding the three select lines. This not only assured me of the functionality of the chip, but also demonstrated the accuracy of the chip (which was within 15% of the expected output). From here, I continued testing by migrating the voltage divider to the other output pins and manipulating the select line values. One of my concerns about the analog multiplexers was going to be the precision required for the select lines; upon further review and testing the select line, 70% of the Vcc value and above is identifies as “High”, and 30% of Vcc and lower identifies as “low”. This provides more flexibility than I had predicted and will become extremely beneficial when progressing to debugging stages, as we will be able to adjust the supply voltages with resistors to fit according. Once I had a solidified understanding of the singular analog multiplexer, I added a secondary multiplexer to imitate a second row on the player’s ship-placing board. Moreover, taking this extra step helped me visualize the layout of the final game board. Overall, it was critical to have a sound understanding of the analog multiplexers, their capabilities, and their constraints. As we progress into the next steps of circuitry and PCB design, our team will be able to better predict the functionality of the multiplexers, and thus the overall ship detection aspect of our game. </br></br>
 			<p><img src="Team/progress/molly/an_mux_2row_test.jpg" width="600" height="250"></img></p>
+			
+			This week I 3D printed a prototype destroyer boat (from a free .stl file found online). Ultimately, this was to help our team visualize the sizing constraints for each of the pegs. After printing, we realized that we may need some type of flat panel on the bottom to evenly attach the voltage dividers. Moreover, one of the biggest challenges of this project will be finding a method of connecting the voltage dividers (inside of the boats) to the circuitry beneath the board, while still having room for the LEDs beneath to shine through. Throughout the week I brainstormed different methods of housing the voltage dividers in the bottom of the boat to electrically connect to the attack board. One idea I had was to open a push button and use the housing unit to store a soldered voltage divider. This was successful in that it just barely fit two resistors but had shortcomings in terms of supply power and ground and blocking the LED from shining through the boat. Next week, I plan to attempt to create a PCB (From the Advanced Manufacturing Team in the ECE Shop) with just a simple voltage divider and a hole in the middle for the LED beneath to shine through. If this is successful, there will be a standardized size for each of the pegs and a more organized method of placing the boats into the attack board.<br>
 
 			<p><img src="Team/progress/molly/boat1.jpg" width="600" height="400"></img></p>
 			<p><img src="Team/progress/molly/boat2.jpg" width="600" height="400"></img></p>
-            <br>
+            
+			In order to complete Homework 4 – Component Analysis, I was responsible for identifying the proper IC to use for charging or recharging the battery. However, after discussing with members from the 477 Staff, it is equally, if not more important, to first identify the type of battery required. Thus, this required some very high-level approximations of the power required by different components. I looked primarily at the microcontroller and the LED matrix since these will have considerable current draws. In doing so, I realized the LEDs will require much more power than our team had realized and may lead us to needing an alternate method of powering the gameboards. Overall, this was crucial for our team to identify so we may address the arising constraints. Next week, our team will work together to determine which powering method will be the most convenient and effective for the user. 
+			<br>
+			<br>
+			Next week there will be a continued emphasis on the user and gameboard interaction; I will investigate more methods of creating a safe, but electrically possible way for the boats to contain the voltage dividers. I will continue to use this time to familiarize myself with KiCad in preparation for creating the PCB layout. 
+
+			<br>
 		
 		
 		
