@@ -30,6 +30,12 @@ contact course staff.
     <link rel="stylesheet" href="css/content.css" />
     <link rel="stylesheet" href="css/grid.css" />
     <link rel="stylesheet" href="css/collapse.css" />
+
+    <script
+      type="text/javascript"
+      async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+    ></script>
     <!--[if IE 6]>
       <link href="default_ie6.css" rel="stylesheet" type="text/css" />
     <![endif]-->
@@ -105,6 +111,19 @@ contact course staff.
             <div id="week4"></div>
           </div>
           <br />
+
+          <h4>Week 5:</h4>
+          <b>Date:</b> 24 September 2021<br />
+          <b>Total hours:</b> 15<br />
+          <b>Description of design efforts:</b>
+          <br />
+          <button type="button" class="collapsible">
+            View Collapsible Content
+          </button>
+          <div class="content">
+            <div id="week5"></div>
+          </div>
+          <br />
         </div>
 
         <!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
@@ -125,6 +144,7 @@ contact course staff.
         $("#week2").load("Team/progress/mitch/week2/index.html");
         $("#week3").load("Team/progress/mitch/week3/index.html");
         $("#week4").load("Team/progress/mitch/week4/index.html");
+        $("#week5").load("Team/progress/mitch/week5/index.html");
 
         var coll = document.getElementsByClassName("collapsible");
         var i;
@@ -140,6 +160,9 @@ contact course staff.
               content.style.display = "block";
             }
           });
+          if (i == coll.length - 1) {
+            $(coll[i]).click(); //open most recent weeks element
+          }
         }
       });
     </script>

@@ -88,6 +88,52 @@ contact course staff.
 	I learned much more about ESP32 programming, and instead of directly copying code from the internet (only for experimentation purposes of course), I believe I can start creating necessary software for a number of the peripherals. I also learned how to implement the ESP-IDF from VSCode, so that instead of taking hours it would take maybe 30 minutes to install fully and correctly. 
 	The next steps to be taken will be to ensure that the development board I possess from the ECE shop is faulty and secure a working development board. Once that is done, I will work on creating a more functional keypad decipherer that is more focused towards the project (i.e. looking for attack coordinates, starting a game, etc.). Also, I want to work with SPI protocol to an LCD interface and display some meaningful data to both refresh myself and lay a foundation for LCD implementation in the project.
 
+	</br>
+            <h4>Week 4:</h4>
+            <b>Date:</b> 9/17/2021<br>
+            <b>Total hours:</b> 10 <br>
+            <b>Description of design efforts:</b><br>
+	I worked on researching and attempting to implement SPI utilizing the ESP32 devboard to communicate with an old ECE 362 OLED display.
+	Also, I confirmed that the development board I had used to develop a keypad scanning algorithm was faulty. I flashed another board and the code worked exactly as designed, so the keypad fully works now. 
+The majority of my time was spent attempting to get the SPI interface to a workable framework. Unfortunately, the OLED I had from ECE 362 is also blown out, as it doesn't light up at all when powered, so was unable to truly test my code. 
+Plenty of work was done however, attempting to refresh myself on SPI and building a framework to do so with an ESP32. The ESP-IDF has quite a lot of information and references to work from. However, many of the resources attempt to make it easier by providing libraries and code examples to work from. This is incredibly useful IF you are comfortable with the materials the libraries provide. For me, the abstractness and handlers that these libraries offer make it incredibly confusing for someone like me attempting to learn it for the first time. 
+With ECE 362, much of the difficulty with SPI came from identifying ports and registers to change and managing the specific characteristics of the display to send the data through SPI.
+With the ESP32, much of this is done behind the scenes of the function calls, the issues arise from building the structures and knowing how these functions all work together in order to use them properly.
+Many of the examples I could find to reference off of, were created from what I assume are mega-geniuses. I spent the vast majority of my time working backward from convulted and intricate code to try and build a framework that was simple and applicable to my usage case of the OLED. The two figures below are code snippets from this framework that I built referencing ExpressIfs code examples. To be honest, since I cannot test it with a broken OLED, I am not sure if it works or not. </br>
+Regardless of the result of my work, the knowledge I gained was time well spent. Through the sea of information, I found many key resources that will be invaluable to both the SPI connection to the OLED and other peripherals. I learned much about utilizing resources provided and got experience attempting to implement them. Ideally, the framework I built will either work or be close to a working state, and I will have then prototyped our display for the project with applicable code to the final design. The next steps I will take is to get a working OLED board and work with TA Fangda to successfully implement the SPI. This could take a wide range of time, depending on my programming. If time, I would like to work on developing code that can do the ship detection. Building a simple test rig with some multiplexers and seeing if I can identify where I place a ship. Also, once the OLED works, I can begin developing the frontend of the user experience and preparing messages such as showing the coordinates as the user types them in, you are playing against xxxx, etc.
+
+
+
+<p><img src="Team/progress/img/Code_SPI_1.PNG" width="425" height="700"></img>
+<img src="Team/progress/img/Code_SPI_2.PNG" width="425" height="700"></img></p>
+
+	</br>
+            <h4>Week 5:</h4>
+            <b>Date:</b> 9/24/2021<br>
+            <b>Total hours:</b> 15 <br>
+            <b>Description of design efforts:</b><br>
+	I worked on implementing SPI communication to an OLED board to display relevant game information and worked on conglomerating the display code and the keypad code to work together.
+	The main part of the workload was debugging and exploring documentation related to SPI communication and the SOC1602A OLED board. My original framework had several bugs, including accidentally flipping the MOSI and MISO GPIO pins within the microcontroller code. 
+	The majority of the debugging was done using an Analog Discovery 2 with digital I/O pins in order to see what signals were coming from the microcontroller and why they weren't displaying to the OLED correctly.
+	The MISO/MOSI flip was discovered by looking at the DATA line and seeing that the ESP32 had it constantly set to logic high.
+	However, the display still refused to output the correct characters on the OLED and instead showed flickering, random symbols. I could see the correct data using the AD2, with the correct characters in ASCII being outputted.
+	I looked deeper into the ESP32 SPI driver and OLED documentation to find the issue was with the 2 command bits that preface a byte. "00" was supposed to preface the command and "10" prefaced data to write. 
+	Upon applying these changes and debugging, the SPI communication worked perfectly, as you can see in the below image.
+
+</br>
+<img src="Team/progress/img/Wk5_Display2.jpg" width="800" height="400" align="middle" />
+</br>
+	I also combined the keypad code I developed and the newly created display code to begin making relevant functionality for the battleship game. 
+	The combined code allows me to see the physical key press data rather than just monitoring the microcontroller on my computer using printf. As you can see below, the OLED now displays whichever key button was pressed by the user, an important function the project will need to display useful information and entering coordinates as shown below.
+	This also required an update to my test rig in order to accommodate both the display and the keypad GPIO pins to connect them in a single microcontroller orientation.
+</br>
+<img src="Team/progress/img/Wk5_Display1.jpg" width="400" height="600" align="middle" />
+</br>
+	The result of this week's work is that a viable SPI framework has been developed and I now have a centralized C file that I can prototype off of, rather than split off in multiple projects. The SPI display and keypad scanning work is essentially done, only difference being that the display ordered for the project may have slightly different commands and format, which is easily adjusted. I learned more about SPI and how character displays work and feel confident in being able to adjust the code to the projects specific display. I also learned that sometimes the way to debug is to use external sources, such as the AD2, to physically look at and explore the peripheral outputs.
+Next week, I would like to begin developing a prototype boat scanning test rig, now that the team has finalized how we plan to accomplish this. By creating a multiplexed array and checking for shorts, I should be able to develop applicable code for the input of boats by the user.
+
+
+</br>
                       
         </div>
 	

@@ -1,0 +1,61 @@
+This week I picked up where I left off with the device pairing. Last week I was
+focused on the server side software (database, ui, etc...), but this week I
+worked with the physical hardware and device firmware required for the pairing
+process. This proved to be much more difficult that I originally anticipated...
+<ul>
+  <li>
+    First, I had to find a way to get a unique identifier of the ESP32 device.
+    After spending hours scrolling through the API documentation and online
+    forums, I found that I can use the MAC address of the device as a device ID
+    and be fairly certain of no overlap. This ID is 12 digit hex string. This
+    means that there can be $$16^{12} = 2.8*10^{14}$$ unique devices. As this is
+    an incredibly large number, and this is for a prototype design, we should
+    have no issues with conflicting device IDs.
+  </li>
+  <li>
+    The next issue was on a related note. I wanted to find a more user friendly
+    way to id the device than a string of hex characters. The way that I wanted
+    to solve this was by using the SSID of the wifi network that the device is
+    connected to. This involved more searching through documentation on the
+    ESP-IDF website to find the data structure that holds this information.
+  </li>
+  <li>
+    Following this, I needed a way to have the user physically confirm the
+    device pairing from the MCU side. I wanted to use a push button to trigger
+    an interrupt that would then send the corresponding websocket message. This
+    turned into a rabbit hole as I tried to the interrupts to work. Because the
+    ESP runs on freeRTOS, nothing is a straightforward as it usually is. To get
+    everything to work correctly, you first need to create and attach an ISR to
+    a certain GPIO pin. This ISR needs to then generate a freeRTOS event. This
+    event is then queued by the OS software and called with a high priority due
+    to its generation from an ISR.
+  </li>
+  <li>
+    Once my initial proof of concept started working, I set out to stub out an
+    API that can be used to interface with the server. The way I did this was
+    using C++ classes that contain function calls for a subset of server
+    messages: Game Request (this involves making a move, positing ships,
+    etc...), Registration Event (these are for pairing the device to a user
+    account), and DB Requests (this is still in its early stages in the server
+    but its purpose will be for gathering user profile information, friends
+    list, etc. for display on the MCU LED screen). Each of these subsets of
+    messages follow their own unique structure of json data. Because of this,
+    each main function per subset will hold unique arguments for what data is
+    needed in the request. For example, the Game Requests need to pass data such
+    as the coordinates of a move that the user is making.
+  </li>
+</ul>
+
+<h2>Device Pairing Hardware/Firmware:</h2>
+<a href="Team/progress/mitch/week5/img/DevicePairing.gif">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week5/img/DevicePairing.gif"
+    alt="Device Pairing"
+  />
+</a>
+This image shows the process of physically pairing the device to a user's
+account. NOTE that this is functional on both the hardware (ESP) side and
+software(Server) side where as last week's demo was exclusively software.
+<br />
