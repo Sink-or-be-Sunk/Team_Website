@@ -1,0 +1,89 @@
+<h4>Overview</h4>
+This week, I spent most of my time integrating embedded software written from
+different team members. We have all been working on prototyping the various
+subsystems of our project in separate code projects, but it is important that
+these pieces start to fit together into one coherent unit. For this weeks
+progress, I was able to integrate the following systems:
+<ul>
+  <li>Keypad Matrix</li>
+  <li>OLED Display</li>
+  <li>RGBW single wire control LED</li>
+  <li>Wifi Provisioning</li>
+  <li>Wifi Websocket Connection</li>
+</ul>
+<h4>Issues</h4>
+During the integration process, I ran into many speed bumps along the way. The
+first issue came from the keypad matrix. The code that I was attempting to
+integrate came from another team member so the first step was to try to
+understand how it worked. The code was all located in a single main.c file where
+the keys were continuously scanned in an infinite loop. This obviously isn't
+something that could directly be ported to our final integration because no
+other tasks would be able to run. Because of this, I started by generating an
+RTOS task for the keypad. This way you can abstract away the actual timing of
+the scanning to the RTOS scheduler and get the appearance of simultaneous
+actions. The next issue with the keypad involved button debounce. The scanning
+approach that was used by the teammates code proved to be very unpredictable in
+terms of button presses. Sometimes a press wouldn't register and sometimes it
+would register as multiple presses. To fix this issue, I created a new algorithm
+instead of scanning in an endless loop.
+<ol>
+  <li>Set all row pins high</li>
+  <li>all col pins are pulled low from pulldown resistor</li>
+  <li>
+    Attach a rising edge interrupt to the column pins that will trigger when a
+    button is pressed to connect the rows to a column
+  </li>
+  <li>In the ISR, trigger an event to send to the RTOS scheduler</li>
+  <li>RTOS scheduler accepts event and processes the key press as follows:</li>
+  <ol>
+    <li>Set all row pins low</li>
+    <li>Iterate through all row pins setting them high one at a time</li>
+    <li>During each iteration check if the corresponding col pin is high</li>
+    <li>
+      Once the row is found which results in setting the col high you have found
+      the row and column of the press
+    </li>
+    <li>Parse the row and column to get the corresponding button</li>
+  </ol>
+  <li>REPEAT</li>
+</ol>
+
+It is important to note at this point that any sort of debounce had to be
+software due to the use of RTOS. Using a simple RC hardware debounce resulted in
+erroneous keypress due to the slow rise time combined with analog noise.
+<br />
+The next main issue came from the single wire control of the LED. Originally, I
+tried to use another RTOS event loop that would use task delays to achieve
+necessary high and low time for the serial communication. As it turns out, the
+delays allowed must be greater than or equal to 10 us. This means that the
+O(10ns) times specified by the LED datasheets were unattainable. To solve this
+issue, I was able to tap into the RMT subsystem of the ESP32. This system is
+generally used for IR remote controls that uses a similar serial control schema
+based on timings. This API allowed for setting the needed high and low times in
+software, set a data payload in bytes, and then send the information to a gpio
+pin.
+<br />
+
+<h4>Results</h4>
+The final product of this weeks work can be seen from the video below. Notice
+that there is a simple graphical interface on the OLED display to prompt the
+user to perform various actions for wifi provisioning. When the user navigates
+to the connect page, pressing the enter (#) key will broadcast the device to the
+websocket server so that a user can connect their device to their account (more
+info on this from last week). The user can also press another button on the
+keypad to turn on the LED. For demonstration sake, when the LED is turned on it
+cycles through all the colors in a strobe-like fashion.
+<br />
+<strong>
+  Note: testing setup is run entirely off the 1100mAhr battery shown in the
+  video.
+</strong>
+<br />
+<a href="Team/progress/mitch/week6/img/Integration.gif">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week6/img/Integration.gif"
+    alt="Device Pairing"
+  />
+</a>
