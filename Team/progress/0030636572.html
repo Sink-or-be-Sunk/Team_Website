@@ -205,7 +205,26 @@ contact course staff.
 				</p>
 			</div> 
 		
-		
+			<h4>Week 6:</h4>
+            <b>Date:</b> 10/1/2021 <br>
+            <b>Total hours:</b> 13 <br>
+
+			<button type="button" class="collapsible">View Week 6 Content</button>
+			<div class="content">
+				<p>
+				<b>Description of design efforts:</b><br>
+				This week my primary focus was completing the schematics and footprints for our PCB designs. As this was my first time building schematics on my own, a lot of time was poured into double and triple checking my work as well as looking up best practices. A few of the challenges I faced with the schematic were finding the correct footprints and correct ICs. Although our team had collaborated on the BOM, it wasn’t until this week that we realized there were still some things that needed to be considered. For instance, in the first attempt of the Main PCB, I completely forgot to add the programming circuitry. Thankfully, my team was able to catch it upon review, and I needed to find a new IC and Micro USB connector in a pinch. With that being said, this also helped me pay even closer attention to detail. With the final PCB layouts due next week, I will be paying extremely close attention and looking out for anything we may have missed in previous steps. <br> <br>
+				Our design utilizes two different PCBs: one for each row on each of the grids (16 rows total, 8 on the attack board and 8 on the ship board) and one for hosting the ESP32 as well as additional modules such as the LCD screen and speaker. The first schematic I worked on was the Grid or Row PCB. This took me roughly 5 hours to complete, primarily because I was continuously checking the datasheets for the components, making sure I was getting exactly the correct functionality and sizing in the footprints. To help me, I rewatched the KiCad videos at the same time to make sure I wasn’t missing any critical steps, especially when I created the footprint for the 8:1 Mux (the 74HC151). Below is my draft of the Row schematic (which was later reviewed and cleaned up by team) as well as a footprint sketch and finalized footprint for the 74HC151. <br><br>
+				<p><img src="Team/progress/molly/my_grid_pcb.jpg" width="900" height="200"></img></p>
+				<p><img src="Team/progress/molly/sketch1.JPEG" width="400" height="300"></img>
+				<img src="Team/progress/molly/fp1.jpg" width="400" height="300"></img></p>
+				The main PCB was much more challenging for me; I revisited it many times throughout the week. In my first attempt, I was using the hierarchical sheets (similar to the cleaned up version of the Row PCB), but this ended up being tedious and more work than necessary. Throughout the week my team gave critical feedback to help me improve the footprints as well as the schematics. One thing I learned while working on the main PCB schematics was that I can use whatever symbol I’d like to best fit the schematic, so long as the footprint matches up to the pins and to the device itself. An example of this is that I needed to create a symbol for a voltage regulator, but it has the generic SOT223 footprint.<br><br>
+				<p><img src="Team/progress/molly/main_pcb_schematic.jpg" width="700" height="500"></img></p>
+				This week was truly a time of growth; I am beyond excited about the experience I gained in working with KiCad, and while I’m sure there are little details that will continued to be improved upon, I am very proud of the work and effort I put in this week. Our team came together to guide me through the schematic process by identifying necessary changes and small errors, while giving me the space to learn and the responsibility to complete the tasks at hand. Looking to next week, I am excited to continue my KiCad journey and focus on making an organized, thorough layout of the PCBs. Next week I am also hoping to begin the 3D boat printing process to make sure our sizing is correct and finish ordering any last minute components – at this point I have ordered everything we initially planned for needing. <br><br>
+
+				<br>
+				</p>
+			</div> 
 		
 		</div>
 	

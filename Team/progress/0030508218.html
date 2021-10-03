@@ -134,6 +134,25 @@ Next week, I would like to begin developing a prototype boat scanning test rig, 
 
 
 </br>
+            <h4>Week 6:</h4>
+            <b>Date:</b> 10/1/2021<br>
+            <b>Total hours:</b> 10 <br>
+            <b>Description of design efforts:</b><br>
+			For Week 6, I worked on prototyping hardware and developing the software for the boat detection. To detect a boat, a 3 to 8 multiplexer selects between 8 other multiplexers,
+			which are then receiving the input of 8 "slots" each, for a total of 64 inputs. The microcontroller cycles through the column select lines, and then the row select lines, 
+			and looks for a "slot" that has been pulled high. Once a high input logic has been detected, by checking the row and column it occurred on, the microcontroller can identify the 
+			position of the placement. As you can see in the test rig below, I only had 6 multiplexers total and enough resistors to pull up 16 inputs, so the microcontroller only cycles 
+			through 16 currently, but the concept is the same. I then had the row and column be identified and sent to the display to prove it was identified correctly. If I were to 
+			improve the test rig, I would need enough resistors for all of the multiplexers but am confident that the code works as intended through my testing. As a result, the boat
+			detection has been prototyped to have real value and should work come implementation time. I learned how the specific boat detection circuit works, as it took me building
+			all 5 multiplexers in and debugging to realize I needed pull-up resistors for every input because the mux cannot sink that amount of current in a short. The next steps for me 
+			will be acquiring more resistors to hopefully finish the rig, and to work on software to begin identifying where a boat of length would be placed. Essentially, scanning the 
+			rows and columns once a short has been detected to find another short, and find each slot that the boat covers. I also want to use a LUT to discard boats that have already been 
+			placed.
+
+</br>
+<img src="Team/progress/img/Wk6_Test_Rig.jpg" width="400" height="600" align="middle" />
+</br>
                       
         </div>
 	
