@@ -1,0 +1,72 @@
+This week I switched gears to focus fully on helping the team to complete our
+schematics/layouts for both of our boards. We have two types of board, the Grid
+board and the ESP board. The later of the two (as the name suggests) holds the
+microcontroller and all main circuitry including power regulation, charging, and
+programming ports. Additionally, the ESP board holds many connects to the
+various components of the design including the speaker, rumble motor, keypad,
+and lcd.
+<br />
+<br />
+
+The other board in our design is the Grid board. This is an auxiliary board
+whose job is to simply house the LEDs and detect the placement of ships. This
+board holds very few components. The board holds a multiplexer to route the
+signals from each of the ship detection rows back to the ESP board.
+Additionally, the board routes the daisy chained LED ICs.
+<br />
+<br />
+
+The process of placing and routing components proved to take far more time than
+expected, and thus the team needed more individuals to split the work. The
+results of this can be seen below:
+<br />
+<br />
+
+<h2>Grid PCB</h2>
+<h4>Layout</h4>
+<a href="Team/progress/mitch/week7/img/Grid_Layout.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week7/img/Grid_Layout.png"
+    alt="Grid Layout"
+  />
+</a>
+<h4>Render</h4>
+<a href="Team/progress/mitch/week7/img/Grid_Render.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week7/img/Grid_Render.png"
+    alt="Grid Render"
+  />
+</a>
+
+<h2>ESP32 PCB</h2>
+<h4>Schematic</h4>
+<a href="Team/progress/mitch/week7/img/sink_or_be_sunk.svg">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week7/img/sink_or_be_sunk.svg"
+    alt="ESP32 Board Schematic"
+  />
+</a>
+<h4>Layout</h4>
+<a href="Team/progress/mitch/week7/img/PCB_Layout.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week7/img/PCB_Layout.png"
+    alt="PCB Layout"
+  />
+</a>
+<h4>Render</h4>
+<a href="Team/progress/mitch/week7/img/PCB_Render.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week7/img/PCB_Render.png"
+    alt="PCB Render"
+  />
+</a>
