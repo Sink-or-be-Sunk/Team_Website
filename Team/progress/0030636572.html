@@ -226,6 +226,40 @@ contact course staff.
 				</p>
 			</div> 
 		
+			<h4>Week 7:</h4>
+            <b>Date:</b> 10/8/2021 <br>
+            <b>Total hours:</b> 15 <br>
+
+			<button type="button" class="collapsible">View Week 7 Content</button>
+			<div class="content">
+				<p>
+				<b>Description of design efforts:</b><br>
+				This week my focus was finalizing any schematics and working on the PCB Layout. While I was supposed to be predominantly responsible for the PCB layout, I realized early in the week that the task was too large for just me, particularly because this is my first PCB design experience. With that being said, Mitch played a critical role in supporting the designs for both PCBs and teaching me along the way. <br> <br>
+				For the main PCB, I initially helped by sorting through the rat’s nest and ultimately sorting the circuit subsystems into separate chunks. From here, it was easier for Mitch and me to take a closer look at the footprint pinouts and reassign pins on the ESP32 and relevant components. Additionally, I worked through some of our primary heat and footprint concerns. For instance, the MOSFET and LDO can create a significant amount of heat if not carefully considered. I did some basic power calculations provided on the LDO datasheet to determine the maximum power dissipated. After identifying the thermal concern from the power dissipated, I reached out to Joe for recommendations. Ultimately, the best course of action for this situation will be to include a large power plane surrounding the Vout pin on the LDO, covering it with vias, and placing another power plane on the other side. Another potential solution would be to use the 5V supply (VBus) for the LEDs, which would significantly reduce the load on the LDO while still providing sufficient voltage for the LEDs. As for the MOSFET, our team will go with a specific P-Channel with a much lower internal resistance, which will create a lower voltage drop and lower the risk of getting too hot. From a footprint point of view, this means we can use an upright MOSFET instead of a flat orientation. <br><br>
+				For the Row PCB, I finalized the proper sizing of the board and spacing between the pegs and LEDs. In order to do so, I re-measured the box dimensions and provided some additional space allowance to each of the rows. To find proper spacing, I drew everything to scale and made exact measurements. Then, to double check, I utilized some additional lines in KiCad and spaced them an inch apart (to resemble grid lines) and double checked the measurements between the center of the pegs and each line. On top of this, since I had the exact measurements between the peg holes, I was able to use this to modify a previous CAD version of the boat to include the holes with exact placement. For this, I utilized the hand-drawn measurements I already had but took a couple millimeters from each side to ensure the boat would not overcrowd any grid squares. I included a small rectangular platform on the bottom of the ship in order to completely cover the LED in the farthest squares. This was a potential concern since the boat from the STL file we are using is very narrow and could leave some exposed LED. Additionally, the boat has been printed in a specific way to allow our team to place the small pegs inside the boat then glue the top on separately; this reduces risk of damaging our boats when drilling through them to place the pegs. Additionally, the sizing of the rectangular platform was highly successful as seen by how flush the pegs are with the bottom of the boat. <br><br>
+				<p><img src="Team/progress/molly/cadBoat.jpg" width="700" height="450"></img></p>
+				<p><img src="Team/progress/molly/boatTop.jpg" width="800" height="200"></img></p>
+				<p><img src="Team/progress/molly/boatSide.jpg" width="700" height="300"></img></p>
+				<p><img src="Team/progress/molly/boatBot.jpg" width="700" height="300"></img></p>
+				This week I learned a significant amount about KiCad and PCB Design and identified shortcuts in OnShape (CAD software) to facilitate boat modification. Looking ahead to the design review, my focus will be critiquing, finalizing, and debugging our PCB layout as well as completing the design review presentation. If time allows, I would like to continue working with CAD to begin modifying and printing boats of different sizes as this will be a rather lengthy process. <br><br>
+				<br>
+				</p>
+			</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		</div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->

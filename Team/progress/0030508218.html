@@ -153,7 +153,28 @@ Next week, I would like to begin developing a prototype boat scanning test rig, 
 </br>
 <img src="Team/progress/img/Wk6_Test_Rig.jpg" width="400" height="600" align="middle" />
 </br>
-                      
+		<h4>Week 7:</h4>
+		<b>Date:</b> 10/8/2021<br>
+		<b>Total hours:</b> 8 <br>
+		<b>Description of design efforts:</b><br>
+		For Week 7, I worked on developing the software to have more functionality regarding boat placement. Essentially, I worked on designing software that looks for 2 shorts, and 
+		then looks through the rows and columns to determine the spaces in between. This required quite a few changes to the original short detection, as I had to work with malloc'd
+		array of Coordinates, and add the new Boat Coordinates to that array. That array is global, which I wasn't originally planning on having, but I'm trying to maintain flexibility
+		in my software design until the code is conglomerated into a single build. The code also now checks to see if the slots are being used, and "skips" over any actions on them
+		if a boat has been previously detected, done using the global array of boat slots. To optimize a bit, this check is only done if a short is detected, so at most it can only happen
+		15 times in a 64 slot scan (All other boats besides the size 2 boat is placed). The test rig was updated to include a 3rd MUX with resistors, just so I had more room to test, as 
+		shown below.
+
+		</br>
+		<img src="Team/progress/img/Wk7_Test_Rig.jpg" width="400" height="600" align="middle" />
+		</br>
+		The result is that the boat scanning software is largely done. The only changes I can imagine would be necessary is if we want to identify individual boats rather than a list
+		of all spaces they exist on and adapting it to the final code. Both could be easily done in 30 minutes. I didn't learn too much, mostly just had to refresh myself with malloc 
+		in C. I also had to brainstorm a few ways to keep the code fast, and even though the ESP32 is powerful, I really do not want to bog it down at all with unoptimized code That
+		could take awhile if it was constantly working in memory and scanning. The next steps I want to take is beginning to work on the DAC and speaker. This may take a few weeks as 
+		analog is notoriously tricky, but I'd like to get it to the point where I can play a simple audio file.
+
+
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->

@@ -133,6 +133,21 @@ contact course staff.
 			<img src="Team/progress/img/Mislanskywk6page.png" width="900" height="450"></img> <br> <br>
 
 
+			<h4>Week 7:</h4>
+            <b>Date:</b> 10/8/2021 <br>
+            <b>Total hours:</b> 10 <br>
+            <b>Description of design efforts:</b><br>
+
+			This week I spent time working on the Software Formalization as well as the Midterm Design Review. <br> <br>
+
+			Working on the software formalization was harder than anticipated because while we have a decent generalization of how our code is going to work, we haven't necessarily defined functions for everything yet. I read through the code on our GitHub and reviewed other teammates progress reports to get a better understand of what code we had already written, but then I had to determine what functionality we still needed to implement. I started working on a framework for the messages that the server will need to send to the board. This includes information such as verifying attack location, the outcome of the attack, the current board state, and if audio or rumble is needed. Since we're using JSON this could be done a couple ways. It could be as simple as a string of information that gets sent and the ESP32 would know exactly which characters do what or it could require a little more computation but make it more readable. I think making the JSON more readable would be more beneficial to the team. An example JSON entry is shown in one of the screenshots below. 
+			In this example, the JSON data represents what the board would receive after an opponent has attacked. The bottom_state and top_state represent the current state of the hits/misses on the board. This will be used to signify which LEDs need to be on and what color they should be. 0 represents off, 1 represents miss (white), and 2 represnts hit (red). The other values in the data would tell the board what sound to play, what kind of rumble for the motor, and whether or not a ship has been sunk.<br><br>
+
+			I also worked on the midterm design review. I created a Gantt chart for the rest of our project and tried to set some soft deadlines of when we want to get tasks completed with the help of one of my teammates. This required doing some preliminary research on shipping times for PCBs from different companies.<br><br>
+
+			<img src="Team/progress/img/Mislansky_wk7_json.png" width="425" height="200"></img> <br> <br>
+			<img src="Team/progress/img/Mislansky_wk7_esp32.png" width="400" height="450"></img> <br> <br>
+
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
