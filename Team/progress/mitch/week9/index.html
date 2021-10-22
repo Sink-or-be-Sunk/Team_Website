@@ -1,0 +1,99 @@
+<br />
+This week, I focused on two things: making final revisions our two PCBs and
+continuing work on the MCU to Server communication. For the PCBs there were
+revisions for both boards as follows:
+
+<h4>PCB_ESP32</h4>
+<ul>
+  <li>Added Team Logo to silkscreen</li>
+  <li>Added Team Signatures to the board</li>
+  <li>
+    Changed back copper from GND to 3v3 to help carry the current needed to
+    power the LED daisy chain boards, Motor, Speaker, and Amplifier.
+  </li>
+  <li>Fixed JST connectors with the correct 2.54mm footprints</li>
+  <li>Updated board dimensions to fit new connectors</li>
+  <li>Updated Switching Regulator Footprint with the manufactures footprint</li>
+  <li>Changed from using the MCP602 to LM4890 for the audio amplifier</li>
+  <li>
+    Changed footprint for the mounting holes to keep copper fill out of screw
+    head diameter
+  </li>
+</ul>
+
+<h4>PCB ESP Final Render</h4>
+
+<a href="Team/progress/mitch/week9/img/Final_ESP32_Render.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week9/img/Final_ESP32_Render.png"
+    alt="Final ESP32 Render"
+  />
+</a>
+<br />
+
+<h4>PCB_Grid</h4>
+<ul>
+  <li>
+    Fixed the issue of the strobe enable not being tied to GND which would lead
+    to undefined behavior for the device.
+  </li>
+  <li>
+    Changed the Footprints of the JST connectors to match the 2.54mm parts on
+    order
+  </li>
+  <li>Changed ESP Mux select signals to create cleaner routing</li>
+  <li>
+    Decreased Ground Plane clearance to allow power path to flow between Mux THT
+    pins
+  </li>
+  <li>
+    Changed mounting hole spacing to better distribute the pressure on inserting
+    ship pins
+  </li>
+  <li>
+    Changed mounting hole footprint to include keep out from the screw head
+  </li>
+  <li>Added wave graphic to silk screen</li>
+</ul>
+
+<h4>PCB Grid Final Render</h4>
+
+<a href="Team/progress/mitch/week9/img/Final_Grid_Render.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week9/img/Final_Grid_Render.png"
+    alt="Final Grid Render"
+  />
+</a>
+<br />
+
+In addition to working on the PCB, I also spend some time working on the MCU and
+Server packet communication. This involved me connecting to the locally hosted
+server with the ESP32 board and ensuring that the packet structure was correct
+on the side of the microcontroller. Note that I have already ran the server
+through many test cases that check to ensure that it behaves as expected.
+
+<br />
+
+While testing, I found that it was difficult to get any real world testing past
+the connection to the game and positioning the ships. To be able to have a back
+and forth, there needs to be an opponent. To allow for this, I created a new
+endpoint on the server that allows for the user to make basic game requests.
+Currently this endpoint has little input validation checks and is more for use
+as a development tool as opposed to a polished user experience. Once
+functionality has been completely verified (right now the create game, join
+game, position ships, and attacks are all working), I can transition to making
+the page have a more professional and interactive feel as a legitimate game.
+
+<h4>Web Game Dev Menu</h4>
+<a href="Team/progress/mitch/week9/img/Game2D.png">
+  <img
+    class="clickable"
+    style="width: 100%"
+    src="Team/progress/mitch/week9/img/Game2D.png"
+    alt="Web Game2D"
+  />
+</a>
