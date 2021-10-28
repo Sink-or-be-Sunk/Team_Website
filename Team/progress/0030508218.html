@@ -173,7 +173,34 @@ Next week, I would like to begin developing a prototype boat scanning test rig, 
 		in C. I also had to brainstorm a few ways to keep the code fast, and even though the ESP32 is powerful, I really do not want to bog it down at all with unoptimized code That
 		could take awhile if it was constantly working in memory and scanning. The next steps I want to take is beginning to work on the DAC and speaker. This may take a few weeks as 
 		analog is notoriously tricky, but I'd like to get it to the point where I can play a simple audio file.
+	</br>
+		<h4>Week 9:</h4>
+		<b>Date:</b> 10/22/2021<br>
+		<b>Total hours:</b> 12 <br>
+		<b>Description of design efforts:</b><br>
+		For Week 9, I revamped and finished the boat detection some more and began looking into using the DAC for playing audio files. Upon further testing, I realized that boat detection
+		software I had already developed was buggy and unreliable, especially with multiple boats plugged in. Originally the boat could have issues when placed along the same row or column
+		and overall was not detecting correctly on occasion. My solution was to revamp the way the software worked, mainly in the data structures and the logic. Instead of a dynamically allocated array,
+		a new data structure containing a fixed length array and a length (of what part of the array has been filled) contains all the boat coordinates. It makes it easier to work with, 
+		more efficient on the microcontroller, and is overall "cleaner". The logic was improved in the way that looked for the "in-between" coordinates. The software first determines the minimum
+		and maximum row/column between the two shorts, and simply adds the minimum to maximum as it goes. That way, the entire boat is added to the global data structure in one loop.
+		In doing so, I fixed the bugs and reliability issues that had plagued it. Also, determining which boat has been placed is easy. Simply check the length of the global structure before,
+		call the boat scan, and compare the length again after to determine the length of the boat that has been added and therefore uniquely identify the boat.
 
+		</br>
+		<img src="Team/progress/img/Week9_Test_Rig.jpg" width="400" height="600" align="middle" />
+		</br>
+		I dove a bit into audio playing as well. Unfortunately, the only documentation I could find in playing music was utilizing Arduino boards or Arduino software. Because of this, I'll
+		most likely have to build this from scratch, using generic DAC-to-audio guidelines I can find on the internet and adapt them to ESP-IDF framework. Might take some time. Our team is 
+		also debating using a TTRS adapter for aux cord audio or continue to attempt to make it play from the speaker. The speaker is desireable, but several issues exist as the speaker is 
+		too quiet without massive power, too centered around higher pitch frequencies, and is having weird "railing" effects from attempting to play a sinusoidal. Regardless, it doesn't change
+		my software development. 
+	</br>
+		The results of this weeks work is that boat detection is 100% complete and ready to be inserted into the general gameflow. If we want to do boat confirm, we simply ask the user to
+		place their boat, confirm the location, and then start the boat scan. The speaker work allowed the team to consider alternatives to our current speaker model and showed me the amount of
+		time creating an audio player without using Arduino may take. I learned how tricky analog can be, understood the workload from playing audio files, and learned to revise and rework code 
+		I had thought was fine before rigorous testing. The next steps to be taken will be develop audio for the game. A function where I can enter in a frequency and time and have the DAC
+		output that signal as a sine wave would be ideal. Probably won't get to playing an audio file quite yet, but at the very least could create jingle from playing different notes.
 
         </div>
 	

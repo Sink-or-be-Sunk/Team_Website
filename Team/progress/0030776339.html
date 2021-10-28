@@ -148,6 +148,24 @@ contact course staff.
 			<img src="Team/progress/img/Mislansky_wk7_json.png" width="425" height="200"></img> <br> <br>
 			<img src="Team/progress/img/Mislansky_wk7_esp32.png" width="400" height="450"></img> <br> <br>
 
+			<h4>Week 9:</h4>
+            <b>Date:</b> 10/22/2021 <br>
+            <b>Total hours:</b> 10 <br>
+            <b>Description of design efforts:</b><br>
+
+			This week I spent time working on the development of the webpage for users' to play our game online against someone with a board. <br> <br>
+
+			I've done some HTML and JavaScript before, but it had been awhile so I spent a few hours just looking over past work and W3Schools tutorials. I wanted to create both of the grids. This involved creating an attack board which means the user needs to see if they are getting hits or misses as well as a placement board where the user can put their own pieces.
+			My teammate Mitch found some good starter <a href src="https://codepen.io/osublake/pen/b46392f9d230db0521502815ae836106">code</a> on creating a board and draggable options. With more research I learned how to use the library <a href="https://shopify.github.io/draggable/">Draggable</a>. Using the example code I was able to implement multiple boats with rotations on click and moving on drag. 
+			Then I worked on the attack board which was relatively easy. I generate the board and gave each cell an ID from 0 to 63. Then if the user clicked on one it changed the class from clear to hit or miss using a lookup table of what the opponents board was. Eventually all of this will have to send and receive data from the server instead of locally, but I wanted to get the UI done first. <br> <br>
+
+			While this was from last week, I still wanted to include it. I spent time on a CAD drawing of our project for our Midterm Design Review and it came out really well. This is a fairly accurate depiction of what our final design should look like.<br><br>
+
+			<img src="Team/progress/img/mislansky_wk9_board.png" width="400" height="375"></img> <br> <br>
+			<img src="Team/progress/img/mislansky_wk9_code1.png" width="400" height="300"></img> <br> <br>
+			<img src="Team/progress/img/mislansky_wk9_code2.png" width="500" height="300"></img> <br> <br>
+			<img src="Team/progress/img/mislansky_wk9_boards.png" width="500" height="200"></img> <br> <br>
+
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->
