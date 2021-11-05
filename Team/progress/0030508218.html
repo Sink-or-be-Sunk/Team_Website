@@ -202,6 +202,44 @@ Next week, I would like to begin developing a prototype boat scanning test rig, 
 		I had thought was fine before rigorous testing. The next steps to be taken will be develop audio for the game. A function where I can enter in a frequency and time and have the DAC
 		output that signal as a sine wave would be ideal. Probably won't get to playing an audio file quite yet, but at the very least could create jingle from playing different notes.
 
+		<h4>Week 10:</h4>
+		<b>Date:</b> 10/22/2021<br>
+		<b>Total hours:</b> 2 <br>
+		<b>Description of design efforts:</b><br>
+		Week 10 was an extremely busy week for me, with 3 exams and two projects in other classes. As a result, I managed to work just a little bit on the audio and speaker aspect of the project.
+		As seen in the picture below, a circuit from ECE 362 is utilized with a TTRS adapter. As the audio system is not a PSSC, it is no big deal to switch to a headphone jack system. I pondered
+		some use cases and looked through old ECE 362 code developed to play audio, and I believe it is reasonable to get decent audio output through the TTRS adapter without too much difficulty.
+		Much can be done to improve the audio quality, such as blending and fading, but that is not a large concern. From this, I can begin working and testing audio output from the DAC to begin
+		building a function that can play a sound file (most likely a MIDI file). For next week, I would like to be able to get some audio output, with minimum of different sine waves at different 
+		frequencies. Not too much learned this week, as much of the learning curve will come next week when I have time to dedicate to the project.
+
+		</br>
+		<img src="Team/progress/img/Test_Rig_Wk10.jpg" width="400" height="600" align="middle" />
+		</br>
+	</br>
+	
+		<h4>Week 11:</h4>
+		<b>Date:</b> 11/5/2021<br>
+		<b>Total hours:</b> 10 <br>
+		<b>Description of design efforts:</b><br>
+		In Week 11, I continued development on playing audio and with the arrival of our PCBs, began soldering components onto our Grid PCBs. I learned how to solder an IC
+		(the multiplexer) by hand, which was a lot of fun. I also learned the process for reflow soldering, by using our solder mask, placing components onto the PCB, and placing it into the oven.
+		It gave a lot of satisfaction to see the one board that I had soldered completely come out of the oven and then tested successfully with our team. Audio wise on the circuit developed last week, the image directly below
+		depicts the main progress I made, using a built in cosine wav generator in the DAC to output a wave of increasing frequency and then back down. The example shown goes from 130 Hz to 3000Hz. 
+		With this, I can play simple jingles or tunes by changing the frequency output to specific notes and setting the duration. Although rudimentary, it could serve as a audio cue for game events
+		by playing specific tunes that I would have to hardcode.
+		</br>
+		<img src="Team/progress/img/Audio_Wave_Cosine.png" width="800" height="400" align="middle" />
+		<img src="Team/progress/img/Audio_Wave_Sine.png" width="800" height="400" align="middle" />
+		</br>
+		The image directly above depicts what I am working on, by precalculating sine values and directly setting the voltage of the DAC. This format gives me much more control, with the ability
+		to add waves, notes, and essentially sounds together to get complex audio. The flat line in between each period is a bug I have yet to find and mitigate, which I'll likely have to fix with DMA
+		and/or timer interrupts. Once I can make these complex audio waves, I can then begin to work on interpreting audio files to play. The fixing of the bug shouldn't be too much work, but from what 
+		I've learned, the file interpretation may take some time. Regardless, the audio is not a PSSC and isn't time sensitive as we build, test, and debug our assembly so it is not a huge priority. But with
+		the remaining time, it should be feasible to output audio that will enhance the user experience. I learned much about analog and audio waves, and how finicky they can be in software. I also learned
+		through experience how to solder and reflow solder, which is a great skill to have as our boards are built. Next week I'll work on getting rid of that flat line on the manual sine wave and begin working
+		on interpreting audio files.
+	</br>
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->

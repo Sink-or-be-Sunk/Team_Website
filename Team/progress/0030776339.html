@@ -166,6 +166,34 @@ contact course staff.
 			<img src="Team/progress/img/mislansky_wk9_code2.png" width="500" height="300"></img> <br> <br>
 			<img src="Team/progress/img/mislansky_wk9_boards.png" width="500" height="200"></img> <br> <br>
 
+			<h4>Week 10:</h4>
+            <b>Date:</b> 10/29/2021 <br>
+            <b>Total hours:</b> 5 <br>
+            <b>Description of design efforts:</b><br>
+
+			This week I continued working on development of the UI for the website for the user to play Sink or be Sunk online. 
+
+			I first spent time developing HTML user templates for different actions on the webpage. The templates I made were account creation successful, reset password, reset password confirmation, game invite, winning message, and losing message. These email templates were created through beefree.io and then downloaded and edited. I've included an example below. The code is <a href="https://www.icloud.com/iclouddrive/0b2vqmi3HXUeVmKBZUDR18PlA#welcome">here</a>.<br> <br>
+
+			<img src="Team/progress/img/mislansky_wk10.png" width="400" height="300"></img> <br> <br>
+
+			After that I found a javascript library that allows you to send emails. This is called EmailJS. You upload email templates to their website and can allow for parameters within that template. I created a function within my existing code that would send the email. While I don't have access to the database currently, it would be easy enough to call from the database to pull the data needed to send the email. I hard coded in the usernames and scores for the parameters. Once the game was completed, it sent an email to myself saying that I won. This can be seen in the GIF below. 
+			<br> <br>
+			<img src="Team/progress/img/mislansky_wk10.gif"></img>
+
+			<h4>Week 11:</h4>
+            <b>Date:</b> 11/5/2021 <br>
+            <b>Total hours:</b> 8 <br>
+            <b>Description of design efforts:</b><br>
+
+			This week I wanted to finish the boat setting portion of the online version of our game as well as the actual attacks. While I did not get to the attacks by Friday, I plan on finishing that over the weekend. The biggest issue that I was having was that boats were allowed to overlap as well as when you rotated them sometimes they would go outside the grid. At first I tried to make it so these things would be avoidable from the user interacting with them but I couldn't find an easy solution with the existing library I was using. I didn't want to rewrite all of my code so I decided to add error detection upon confirmation.
+			This was difficult at first because I had to figure out how to pull the correct information from the objects as they were not typical CSS values. I also ran into a weird problem (that I think had to do with objects being initialized in the DOM) in which the height and width of the boats were not showing up. I found a different way to access these values through JQuery which made my life a lot easier. The boat placements is now totally complete because the user cannot place boats on top of each other and it packages the data to send to the server. Once I am totally finished with this portion I will work with Mitch to
+			send the data correctly. My next steps are to show attacks from the other user, send attacks correctly from yourself, and spend more time on the actual visuals so we have boats instead of colored blocks.
+
+			<img src="Team/progress/img/mislansky_wk11.gif"></img> <br> <br>
+
+			Lastly, in lab I started working on assembling the grid PCBs and will help the team finish those hopefully early next week. I helped with attaching the LEDs, resistors, and capacitors with solder paste so that it could be putt in the oven. We still need to add the actual connectors for the boats and we will work on that next week. 
+
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->

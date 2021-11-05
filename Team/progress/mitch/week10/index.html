@@ -1,0 +1,52 @@
+<br />
+This week I spent many hours getting the microcontroller communication with the
+server all working. The difficult part was not the message passing or the
+websocket, but rather the architecture of the entire embedded system in general.
+I decided to split all main functional units into separate C++ classes to keep
+things organized. This way I would have classes such as WifiManager,
+ButtonManager, ScreenManager, etc...
+<br />
+
+The main effort was getting the ScreenManager class completely fleshed out. The
+ScreeManager is in charge of keeping the state of the menus for the Character
+Display. The screen needs to update for any game events received through the
+websocket as well as it needs to respond to any user interaction with the
+buttons. This level of interconnection between classes, such as between the
+websocket class, the button manager, the websocket message builder class, and so
+on led to growing complexity; however, this structure also made finding bugs
+very easy.
+<br />
+
+<h4>Screen Manager Demo:</h4>
+
+<div class="column clickable">
+  <a href="Team/progress/mitch/week10/img/ScreenManagerDemo.gif">
+    <img
+      src="Team/progress/mitch/week10/img/ScreenManagerDemo.gif"
+      alt="Screen Manager Demo"
+    />
+  </a>
+</div>
+<br />
+Note that this demonstration shows the user scrolling through the friends list
+which requires the microcontroller to send a request for a user's list of
+friends that is stored in the database. The server sends back the list and the
+micro renders out the screen with this information.
+<br />
+<br />
+After the weeks work, the user is able to play an entire game by creating or
+joining a game, positioning their ships (this is hard coded right now), and then
+sending and receiving attacks from another player from the web game console
+interface. Below is an image of the attack screen.
+<br />
+
+<h4>Attack Screen:</h4>
+
+<div class="column clickable" style="width: 50%">
+  <a href="Team/progress/mitch/week10/img/AttackScreen.jpeg">
+    <img
+      src="Team/progress/mitch/week10/img/AttackScreen.jpeg"
+      alt="Attack Screen"
+    />
+  </a>
+</div>
