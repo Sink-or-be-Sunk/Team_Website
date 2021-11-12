@@ -1,0 +1,68 @@
+<br />
+This week I continued to work on the embedded code integration. First, I added
+the ship detection code into the project to control the multiplexers and
+calculate the proper ship given any two points on the board where a ship has
+been added. Next, I added a new class to handle the board LED state. This class
+parses the board information sent by the server on every move and displays a
+color to describe that state. For example, when a board position is filled by a
+ship, it is lit up green. When there has been a miss, the color is white and
+hits are indicated with red. Furthermore, I integrated this new embedded code
+with new server messages to provide the board upon every new move. This means
+that the server can keep track of the game boards with the higher level
+JavaScript code. This frees up processing time and program space for the ESP as
+it only needs to parse information from the server and not store any board state
+data internally.
+
+<br />
+<br />
+The first part of my testing with the boards included running a basic rainbow
+pattern on the LEDs to ensure that they were working properly. A demonstration
+can be viewed below.
+
+<h4>Rainbow Demo</h4>
+<div class="column clickable">
+  <a href="Team/progress/mitch/week12/img/led_rainbow_demo.gif">
+    <img
+      src="Team/progress/mitch/week12/img/led_rainbow_demo.gif"
+      alt="Rainbow Demo"
+    />
+  </a>
+</div>
+<br />
+
+Next, I tested the integration with the server game play. The ESP is connected
+to the websocket server and as the player makes their moves, the board is
+updated as shown to indicate hits and misses.
+
+<h4>Game Board Demo</h4>
+<div class="column clickable">
+  <a href="Team/progress/mitch/week12/img/grid_demo.gif">
+    <img src="Team/progress/mitch/week12/img/grid_demo.gif" alt="Grid Demo" />
+  </a>
+</div>
+<br />
+
+As the above testing was contingent on the Grid PCBs being populated and
+soldered, a large chunk of this week was dedicated to soldering. At this point,
+we have finished soldering these PCBs with every component except for the ship
+input slots. Additionally, we have found that a number of the boards do not work
+as expected. An example of this is that only the first 3 LEDs will light up and
+the others will remain off. We are currently looking into this issue which most
+likely results in poor solder connections.
+
+<br />
+<br />
+
+In addition the the Grid PCBs, I also worked on soldering the main ESP PCB. This
+board is significantly more complicated and we have run into a number of issues.
+Most of these issues have stemmed from out USB to UART converter that allows for
+serial programming of the microcontroller. First, we noticed that we didn't have
+any level shifting for this device meaning that the UART signal being sent to
+the ESP was 5 volts for a 3.3v device. After fly-wiring the PCB to make use of
+the internal 3.3v level shifter of the USB to UART device, we were still having
+intermittent issues with even connecting the device to the computer. The issue
+here turned out to be that the micro USB port was poorly soldered to the point
+where the data plus pin had a bad connection. Currently, we can successfully
+connect our serial programmer; however, we are now dealing with an issue where
+the microcontroller isn't detected. As we have bread boarded this circuit
+successfully in the past, we are unsure where our issue lies.
