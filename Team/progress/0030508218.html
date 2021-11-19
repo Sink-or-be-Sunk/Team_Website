@@ -240,6 +240,60 @@ Next week, I would like to begin developing a prototype boat scanning test rig, 
 		through experience how to solder and reflow solder, which is a great skill to have as our boards are built. Next week I'll work on getting rid of that flat line on the manual sine wave and begin working
 		on interpreting audio files.
 	</br>
+
+		<h4>Week 12:</h4>
+		<b>Date:</b> 11/12/2021<br>
+		<b>Total hours:</b> 10 <br>
+		<b>Description of design efforts:</b><br>
+		Unsurprisingly, this week's work on creating a smooth sine wave utilizing a timer interrupt and creating a framework to add together signals to create complex audio wave was much
+		more difficult than I had intended. I did quite a bit of research on different audio wave formats and mostly become more confused. Utilizing the midi.c file from ECE 362, I think
+		I may be able to interpret the midi file and make some actionable audio using the ESP's DAC. Unfortunately, a key part of that is utilizing a timer to cause interrupts and update the sine wave.
+		Making a timer to hit the tick rate of default midi files (about 96 Hz) should be straightforward, yet I've had nothing but issues. As shown below, I created a separate file specifically
+		for audio playing and attempted to initialize the timer with these values. I wrote an interrupt service routine for the timer that just advances to the next update on the sine wave. Should output
+		a simple sine wave with the 96 Hz wave, not really worrying about smoothness, just trying to get functionality. However, I could not get any meaningful output from it, as it just
+		hovers around the 1.65V mark with a little voltage spike every once in awhile. Even trying to output a simple square wave was to no avail, and the output just remained flat. With
+		debugging attempts, it seems as though the ISR is never called. 
+		</br>
+		<img src="Team/progress/img/Garrett_Prog_Report_Audio.png" width="800" height="400" align="middle" />
+		</br>
+		I tried a whole bunch of things, just to get simple changes from a timer. I'm still not sure of the reasoning of why I can't get the timer to work, but I have a few ideas. The ESP32 
+		timers have some alarm configuration on it, and the documentation is extremely obtuse about what it actually does. It could also be with the FreeRTOS system and how functions are called
+		between each other. Yet, I'm following the steps laid out by the ESP-IDF documentation exactly in setting up my timer and it's just weird that I cannot get a single periodic interrupt out 
+		of it. I even tried using one of the high resolution timers which seemed less software heavy to use, yet I still couldn't get a signal out.
+	</br>
+	</br>
+		Resulting from all of this, I recognize that I will need some assistance in managing timers and audio with the ESP. It may be a simple fix for the timer (hopefully), but even the audio 
+		file interpretation and playing is a monster task in itself. I learned that ESP-IDF documentation can be helpful, but they do not explain many concepts and functions that is not obvious,
+		at least to me. I did learn quite a bit about audio, and believe I have a decent approach to how I can interpret MIDI files and begin to play them. Obviously, I learned a lot about timers
+		but it seems I still have much to go. For the next steps, I'm going to continue to try and fix my timer and begin more audio framework, and seek assistance with some parts of the code 
+		as I believe I am conceptually missing a good chunk. Also, a good amount of my focus will be in constructing our actual gameboards as the semester winds down and laying out our PCBs is far
+		more important than getting the audio to work.
+	</br>
+
+	<h4>Week 13:</h4>
+	<b>Date:</b> 11/19/2021<br>
+	<b>Total hours:</b> 20 <br>
+	<b>Description of design efforts:</b><br>
+		This week, I focused on finishing some of the hardware work that just needs to get done. Mainly, the Grid PCBs for all connections and headers. As shown below, I cut, filed, glued, and emplaced 64 of the 2x2 female header pins necessary for detection.
+		Myself and another team member (Molly) then proceeded to solder all of them onto 8 boards. Included in this, was finishing other soldering tasks for the bottom Grid PCBs as a few of them 
+		were missing multiplexers and connectors. Not a super exciting task, but quite time consuming. I also finished soldering the connectors (all the reflow soldering had already been done) for the 
+		top 8 boards, for LED communication and power and ground. The top boards still need testing to ensure the LEDs all respond, but the bottom boards have already been tested and working.
+	
+	<div style="text-align: center"><img src="Team/progress/img/Garrett_Header_Boards.jpg" width="400" height="600" /></div>
+		I also worked on marking the drill holes where we will mount our Grid PCBs. Ended up being more difficult than expected. The bottom PCB's connectors elevate the PCB off the base and cannot lie flat,
+		making it difficult for PCBs that need to be exactly spaced correctly so that the boats will fit into the headers. The first attempt, on the bottom left, was to use tape and a male header pin 
+		"jig" to try and line everything up correctly. It technically worked, but the simple task of marking the bottom was impossible since it was raised off and the vibration of tapping a nail caused the 
+		PCBs to shift. The second attempt was a much better idea (idea from Molly), to simply use the unused PCBs that would lay flat onto it and could be easily marked (bottom-right picture).
+		Worked like a charm and now have perfectly lined up drill hole markings. Unfortunately, it turns out that our PCBs are being mounted to the top sheet of acrylic, rather than the bottom of the casing.
+		Bit of miscommunication between myself and teammates. The good news is that because the acrylic is clear, I can simply cut it to shape and then re-mark the holes on the acrylic for drilling so re-spacing
+		everything isn't necessary and time is not wasted.
+	<p><img src="Team/progress/img/Garrett_First_Layout.jpg" width="425" height="700"></img>
+	<img src="Team/progress/img/Garrett_Second_Layout.jpg" width="425" height="700"></img></p>
+		Resulting from this work, once I get my hands on the acrylic and a bandsaw, I can cut out the acrylic and mount all the completed PCBs onto it. It means that packaging for the project
+		will be much closer to being completed. Once the connecting pieces, cables, and placement for the LCD and keypad are made, the project will be almost fully together hardware wise and can be tested
+		in a much more rigorous fashion. I learned how much actually goes into packaging, as it is mostly an afterthought, as well as improving my soldering skills tremendously. For the next steps, I would like
+		to mount and package everything for the first board. We still have an entire second board to do, but for our PSSCs, getting this done is essential. The audio development is on the back burner for now,
+		but I may work on it once the necessary hardware and PSSC tasks are completed.
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->

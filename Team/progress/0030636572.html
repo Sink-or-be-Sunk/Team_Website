@@ -351,6 +351,33 @@ contact course staff.
 
 
 
+			<h4>Week 12:</h4>
+            <b>Date:</b> 11/12/2021 <br>
+            <b>Total hours:</b> 12 <br>
+
+			<button type="button" class="collapsible">View Week 12 Content</button>
+			<div class="content">
+				<p>
+				<b>Description of design efforts:</b><br>
+
+				This week my primary focus was populating as many of our PCBs as possible. For the ESP32 board (or Main board), last week we completed the power supply subsystem, this week I added the components for the Lipo Charging subsystem, USB to Serial subsystem, Auto-reset, and some additional components such as resistors and capacitors. At this point, Mitch played a critical role in testing the components, and we discovered that the USB to Serial bridge IC that we were using was being powered with the wrong voltage, and more significantly, outputting voltages that were too high on the RX and TX lines ultimately fried the ESP32. In order to fix this, a couple of the traces were scratched out, and we added an additional voltage divider to keep the Reset pin from floating. Then, I de-soldered and re-soldered a new ESP32 onto the board. Now, we are able to identify the ESP32 on a computer, however the device itself is not being recognized, and thus we are unable to program it. This will be a primary concern going into next week. <br><br>
+				During this week, I also spent a substantial amount of time working with the Grid PCBs. At this point, we have 24 boards that are populated with LEDs, resistors, capacitors, and connectors – some of these boards still need multiplexors however we are running very low and more will be ordered this weekend. Of these 24, 17 boards are working as expected and the others have varying issues with LEDs not turning on. <br><br>
+
+
+				<p><img src="Team/progress/molly/wk12/IMG_5314.gif" width="400" height="400"></img></p>
+				<p><img src="Team/progress/molly/wk12/IMG_5318.jpg" width="700" height="400"></img></p>
+
+				I believe the issues with the Grid PCBs is a result of the oven and solder paste. Moreover, because the Grid boards are quite long, the solder joints on either end of the board are sometimes incomplete (the solder doesn’t actually get hot enough in the oven to flow), which leads to a series of connection issues. To fix this, I have been looking at the joints on each of the broken boards, and re-heating with an iron to improve connections, or adding more solder to joints with minimal connection. Another area to look at is the power and ground connectors; if these have poor solder joints then it is possible that the LEDs are not getting powered. <br><br>
+				Going into next week, I am trying to complete all 32 required Grid PCB boards (and also adding the female headers for the actual boat input) as well as finish the ESP32 board as much as possible. Of course, we will need to first diagnose programming situation, but hopefully once that is complete we will be able to continue with the other subsystems on the board. As for the Grid PCBs, the female headers still need to be cut down to size, sanded, and soldered on (I have a good amount of the headers cut down and sanded, but not quite 128 of them).  A stretch goal for this week is to start mounting our grid PCBs into the game box! <br><br>
+
+
+				<br>
+				</p>
+			</div> 
+
+
+
+
 
 
 

@@ -1,0 +1,51 @@
+<br />
+This week was a frustrating mess of debugging the PCB. The first half of the
+week was dedicated to figuring out why we were unable to flash the PCB with
+firmware. From countless hours of probing, debugging, and fly-wiring, the
+following flaws were discovered in our design:
+<ul>
+  <li>
+    The USB to UART converter has a VCCIO pin that sets the logic level of the
+    UART transmission. We had this pin set to 5v which fried the ESP micro which
+    uses 3.3v logic. Fly-wiring was used to tie the VCCIO pin to 3.3v fixing
+    this issue.
+  </li>
+  <li>
+    The USB to UART IC RX and TX pins were tied to the RX and TX pins of the
+    microcontroller. They are supposed to be cross connected so that the RX of
+    one connects to the TX pin of the other allowing bidirectional
+    communication. This was fixed through cutting the traces and fly-wiring
+  </li>
+  <li>
+    After successfully checking off a PSSC where the board was able to connect
+    to WIFI, the board stopped working with the flash. This issue was never
+    resolved and I would speculate that the ESP on this board has some
+    connection issues causing faulty resets or unexpected strapping pin signals.
+    From this point, we decided to move to another board and completely bypass
+    the programming circuit and move that to an external board.
+  </li>
+  <li>
+    The external programmer auto reset circuit failed to reset the chip. This
+    was fixed by manually pulling the boot and reset pins low during device
+    flash.
+  </li>
+  <li>
+    It was found that the pins that we were using for spi communication with our
+    LED display were used for internally accessing the flash memory of the
+    device and were not recommended for use. Because of this, the code would not
+    work with these specific pins. We have a plan to move the pins around to
+    allow our code to work. This will mean that we use connectors that are
+    supposed to be used for another function for the LCD. This is not an ideal
+    solution, but it should allow for our complete functionality of the project
+    with the downside that our cabling is a bit messy.
+  </li>
+</ul>
+
+<h4>PCB Debugging</h4>
+
+<div class="column clickable" style="width: 50%; margin: auto">
+  <a href="Team/progress/mitch/week13/img/pcb_debug.jpeg">
+    <img src="Team/progress/mitch/week13/img/pcb_debug.jpeg" alt="PCB Debug" />
+  </a>
+</div>
+<br />
