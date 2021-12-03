@@ -1,0 +1,34 @@
+<br />
+This week I worked on various bug fixes for the embedded software to get it to
+production quality. This involved adding new features such as a new packet to
+reset the state of the microcontroller when the connection is interrupted. This
+allows players to have their micro completely powered off and then reconnect to
+their game. Throughout the revisions in the code that I produced, I published
+new releases to GitHub. This allows for anyone on the team to have the ability
+to flash the code onto the ESP device even if they do not have the ability to
+build the project from the source. This is important because we have had
+continual issues where teammates are unable to configure the build tools on
+their systems.
+
+<br />
+<br />
+In addition to working on embedded, I spent a lot of time focusing on the web
+interface of the gameplay. The following image shows the interface for the user
+to interact with the game from their web browser. It allows the user to drag the
+images of the ships to their desired locations on the game to position their
+ships. In addition to being an important part of our web application.
+Programming this web interface has allowed me to test the server code without
+the need to work with the embedded system. This has allowed me to catch and fix
+bugs that have arose from corner cases in the gameplay that I may not have
+caught from testing over the ESP websocket code.
+
+<h4>Game Console</h4>
+<div class="column clickable">
+  <a href="Team/progress/mitch/week15/img/game_console.png">
+    <img
+      src="Team/progress/mitch/week15/img/game_console.png"
+      alt="Game Console"
+    />
+  </a>
+</div>
+<br />

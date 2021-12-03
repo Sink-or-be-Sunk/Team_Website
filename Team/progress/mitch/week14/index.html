@@ -1,0 +1,66 @@
+<br />
+This weeks progress is slightly less than average due to the Thanksgiving
+Holiday shortening the week. Additionally, I left for break last Friday, meaning
+my contributions were all virtual this week. The major task that I helped with
+(again virtually over zoom calls) was to assist Molly with flashing new firmware
+to the ESP PCB to try to remediate our issue with the pin definitions of the
+board. As I stated in last week's report, I found that the pins that we had
+assigned and routed on the PCB had limitations in their usage that meant we
+needed to make some changes to the code in order for all the required functions
+to work properly.
+
+<br />
+<br />
+The first thing that I did was to lay out which pins we currently were using on
+an excel document. I then went through and listed all the limitations that these
+pins had, and displayed conditional formatting on the pins that definitely would
+not work with our design. Again, the issues included trying to use a pin for an
+output that was only a GPI pin (instead of a true GPIO pin) or trying to use a
+pin that is restricted to the internal SPI flash access of the device. These
+pins are not recommended by the manufacturer for use and thus we need to leave
+them as no connects on the physical ESP PCB.
+
+<br />
+<br />
+Following making this list, I then added a column to show which of the pins were
+directly connected to pin headers/connectors on the board. This would allow us
+to easily swap pins by simply changing where the connector plugs into the board.
+Once I did this, I began the process of moving and swapping the pins so that in
+theory every pin should be able to accommodate the required function of the pin.
+The final list that I created can be seen below.
+
+<h4>Pin Redefinition Chart</h4>
+<div class="column clickable">
+  <a href="Team/progress/mitch/week14/img/pin_redef.png">
+    <img
+      src="Team/progress/mitch/week14/img/pin_redef.png"
+      alt="Pin Redefinition Chart"
+    />
+  </a>
+</div>
+<br />
+
+With this chart as a guide, I changed the pin definitions in the code. To help
+with this, I created a new manager class that is responsible for all the pin
+definitions. This way, I can go to one place to change the pins for the entire
+project. The next step was to flash the code onto the device and ensure that it
+worked. This is where I began to run into some issues due to my inability to be
+in the lab physically. I worked with Molly to download the ESP IDF build tools
+so that she could build and flash the project. During this project we
+encountered many issues and ultimately we were unable to get her computer fully
+set up with the tools needed to build the project.
+
+<br />
+<br />
+
+To get around this as a temporary fix. I created releases on GitHub where I
+attached a zipped version of the build directory of the code. This directory
+contains all the binaries and configuration files needed to flash the device
+which is generated from a project build. This way, Molly was able to download
+and extract the build folder into her project and flash the device with the code
+that I built on my computer. This process ended up working for the flash, but we
+are still working out bugs in the actual performance of the code. Only some of
+the buttons in the button matrix are working as expected and the Display is not
+working. These are most likely issues with the physical wiring of the device and
+is something that I will be able to help with more once I get back to campus
+next week.

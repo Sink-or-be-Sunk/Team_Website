@@ -294,6 +294,48 @@ Next week, I would like to begin developing a prototype boat scanning test rig, 
 		in a much more rigorous fashion. I learned how much actually goes into packaging, as it is mostly an afterthought, as well as improving my soldering skills tremendously. For the next steps, I would like
 		to mount and package everything for the first board. We still have an entire second board to do, but for our PSSCs, getting this done is essential. The audio development is on the back burner for now,
 		but I may work on it once the necessary hardware and PSSC tasks are completed.
+
+		<h4>Week 14:</h4>
+		<b>Date:</b> 11/28/2021<br>
+		<b>Total hours:</b> 7 <br>
+		<b>Description of design efforts:</b><br>
+			For this fine Thanksgiving week, I worked on more packaging and assisted Molly with adapting our main PCB to interact with keypad and LCD. Shown below, I assembled and mounted all of
+			the bottom Grid PCB boards to the acrylic sheet that was cut. The top acrylic needs to be recut so that we don't have the boat holes unnecessarily. Looks pretty good and fit well, with some
+			adjustments and filing. Once the top sheet is cut, I can assemble that as well and build the connectors to start linking all the functional blocks together.
+		
+		<div style="text-align: center"><img src="Team/progress/img/Brillhart_Turkey_Week.jpg" width="600" height="400" /></div>
+			Molly and I also worked on debugging and trying to flywire our PCB board to get the correct functionality of both the Keypad and the LCD. Since I had prototyped the Keypad and found many of the nuances
+			that go with it (ex. pins are ordered column row rather than row column), it helped a lot for the team for me to get a second pair of eyes on the hardware. The PCB also had a conceptual flaw with the resistors
+			on rows rather than columns, and having pull down resistors to perpetually ground them. We managed to identify and work through these issues. Unfortunately, we are still having problems with the keypad
+			but it most likely lies somewhere in the software, with pin definitions and/or the input only pins.
+	</br>
+	</br>
+			The result of this is that we are finally putting together major pieces of the assembly together, so once our PCB issues are resolved we can fit them all together easily. More work will need to be done to 
+			fit and assemble the other blocks, but we are making headway. With the PCB, the process of debugging and flywiring is ongoing. It is a bit stressful with approaching deadlines but I'm confident
+			we will be able to make it work in time. Good progress is being made in pin selection and fixing the hardware for the LCD and keypad, two important blocks. I learned that hardware and flywiring is manageable,
+			but can be quite tricky to think about. Diagrams and drawings of pins and labels help tremendously. Next, I will continue to assemble blocks of our board and work with my teammates in debugging our main PCB,
+			especially for the keypad and LCD. It is also almost certain that we will abandon making a 2nd board, due to our main PCB difficulties and because the game is playable online against the single board.
+
+			<h4>Week 15:</h4>
+			<b>Date:</b> 12/3/2021<br>
+			<b>Total hours:</b> 10 <br>
+			<b>Description of design efforts:</b><br>
+				This week consisted of building the connections for the entirety of the base board. Each grid PCB board needs a connector for power and ground, MUX_OUT, SELA, SELB, SELC, and to 
+				be daisy chained to the next Grid PCB with LED_in and LED_out. The picture on the bottom left with yellow wire shows the connectors and assembly made for the LEDs. The picture on the 
+				bottom right shows some of the connectors I made and how I assembled them, with stranded 22 gauge wire and using a wiring diagram made by Mitch for me. This is straightforward work, but is
+				quite time-consuming and detail oriented. I originally designed a solid amount of the connectors using the hand tool that does one at a time, which is extremely slow going. Eventually, I was
+				able to get my hands on the connector "hand-gun" which made it much faster. Still, the connections are require crossing the order of wires and managing the placement order. I made sure to double-check
+				everything multiple times to ensure that the correct connection was made.
+				<p><img src="Team/progress/img/Garrett_LED_Chain.jpg" width="350" height="600"></img>
+				<img src="Team/progress/img/Garrett_Full_Shot.jpg" width="425" height="400"></img></p>
+					One of the issues we came across, shown below on the picture of PCB below, was that because the connectors do not crimp straight vertically, stacking all the connectors right next to each other
+					is impossible as they get into the way of the neighboring connector wires. This is unfortunate as we cannot move the pins on PCB, and either need to make it work somehow or only use
+					jumper cables rather than all the connectors I worked hard for. My ideas include stacking female and male headers onto the pins, similar to stadium seating to make it work, although
+					the addition of more connectors raises the possibility of a bad connection. It will have to be tested. The result of my work means that connectors are mostly done, with just a few more that need to be
+					made and to solve the issue of the stacking. I learned how to use both the hand tool to press wires in and the hand gun tool to do the same but with much more ease. For the next steps,
+					the board must be finished and all physical connections and hardware tested and fully assembled. 
+			<div style="text-align: center"><img src="Team/progress/img/Garrett_PCB_Connectors.jpg" width="600" height="400" /></div>
+			
         </div>
 	
 		<!-- Instantiate global footer. Any changes to the footer should be made through the top-level file "footer.html" -->

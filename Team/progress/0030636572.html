@@ -349,8 +349,6 @@ contact course staff.
 			</div> 
 
 
-
-
 			<h4>Week 12:</h4>
             <b>Date:</b> 11/12/2021 <br>
             <b>Total hours:</b> 12 <br>
@@ -376,8 +374,59 @@ contact course staff.
 			</div> 
 
 
+			<h4>Week 13:</h4>
+            <b>Date:</b> 11/19/2021 <br>
+            <b>Total hours:</b> 14 <br>
+
+			<button type="button" class="collapsible">View Week 13 Content</button>
+			<div class="content">
+				<p>
+				<b>Description of design efforts:</b><br>
+				As the final deadlines are approaching, our team has redirected its focus to working together towards building the first game board. In the very beginning of this week, Garrett and I worked on finalizing enough of the boards for a full bottom (or ship) board. This included cutting double and single headers to size, gluing together, if necessary, perfectly lining them up, then soldering them into each of the Grid PCBs (8 groups of 4 sockets are needed for each row, 64 total per game. The attack grid will not need these sockets because they are used for ship detection only). During this process, Garrett and I learned after the first couple boards that we needed a simple, consistent method of lining up the sockets, because during soldering they tended to shift slightly, and would be misaligned. To do so, we created extra long headers (by gluing multiple together) and taping them down horizontally with the PCB. This way, we could tape the sockets into place and ensure the alignment of them with regards to each other. <br><br>
+				During the week, our team began experiencing many technical difficulties with our Main PCB. Primarily, some of the pins we are using on the ESP32 are not designed for our intended functionalities. With that being said, this week I tried to support Mitch in the process of debugging and determining the issues with our board. To help us isolate some of the USB to Serial problems, I started populating a new Main PCB (we only need 2 boards, I ordered 5) and directly fly-wired connections, from the TX and RX pins from where the USB to Serial IC should have been, to a breadboard prototype using the FTDI, USB to UART development board. <br><br>
+
+				<p><img src="Team/progress/molly/wk13/IMG_5330.jpg" width="400" height="400"></img></p>
+
+				This seemingly worked temporarily, however at this point we were still having unpredictable outputs; sometimes everything appeared to be working nominally, and the next, everything has crashed. With that being said, Mitch did a lot more research into narrowing down the problem, and determined that we need to reassign/repurpose some of the connections to the ESP32. We discussed different ways to fly-wire the connections, which pins will need to include pull-down resistors (all of the input-only pins), and so on. On top of this, he helped me begin setting up the required tools for flashing the ESP32 so I can continue with this debugging process next week. Overall, we established a gameplan as to how to plan to fix some of the connection issues, and now we will just need more testing.<br><br>
+				This week I also drew up a diagram of the board layout and the proper spacings for the sockets and screw holes for the ECE Machine Shop in order to cut our acrylic sheet. Unfortunately, the machine shop is experiencing AutoCad issues and may not be able to have our sheet cut until later next week (potentially even after break), which will greatly limit our time to actually mount the PCBs into the box and to the acrylic. In order to make sure the PCBs were perfectly laid out, I created an 8 inch outline (the room available in the box for grid), lined up the first board, then used a couple of the complete boats to ensure each of the boards was properly lined up with the others. In continuation of the boat building process, the last set of (matching) boats was printed this week and ready to be assembled. <br><br>
+
+				<p><img src="Team/progress/molly/wk13/IMG_5332.jpg" width="400" height="400"></img></p>
+
+				Overall, this week was tough, and our team has started to feel the pressure of the nearing deadlines. Moving into Monday and Tuesday of next week, I will be trying to do more debugging and fly-wiring in order to get our main PCB to be buildable and flashable. 
+
+				<br>
+				</p>
+			</div> 
 
 
+			<h4>Week 14:</h4>
+            <b>Date:</b> 11/28/2021 <br>
+            <b>Total hours:</b> 15 <br>
+
+			<button type="button" class="collapsible">View Week 14 Content</button>
+			<div class="content">
+				<p>
+				<b>Description of design efforts:</b><br>
+				
+				With this week being Thanksgiving Break, my responsibilities throughout the week were more spread across different aspects of our project. One of the biggest things I worked on was installing the required tools and software for the ESP32 for programming and flashing. Mitch helped me get everything working properly, however it took multiple attempts and hours to get everything running; even so, the current setup I have allows me to flash the software, but I run into many errors trying to build. To get around the building issue, Mitch was able to build the code on his end (to reflect pin adjustments) then send me the zipped file to flash and run the serial monitor. The pictures below exhibit proper flashing then proper monitoring. <br>
+
+				<p><img src="Team/progress/molly/wk14/1.jpg" width="300" height="250"></img></p>
+				<p><img src="Team/progress/molly/wk14/2.jpg" width="300" height="250"></img></p>
+
+				The main reason for getting set up with the software side is so I could work on making the pin adjustments and testing. Moreover, Mitch discovered issues with some of the pins we had selected (some were input only, some were directly connected to memory) and we discussed possible solutions. In the process of making the changes, I soldered on a couple more components and pull down resistors and utilized the exposes JTAG pins and the couple extra debug pins we included to properly wire the keypad and LCD display. At first, the ESP32 would not flash, and we later determined it to be directly correlated to the motor subsystem. To fix this, I completely desoldered the mosfet and pull down resistors (since they were using the ground from the mosfet), since the motor line going into the mosfet comes from one of the pins not recommended for use on the ESP32 datasheet. Then, we were able to flash and test the setup. <br><br>
+					
+				<p><img src="Team/progress/molly/wk14/temp3_wk14.jpg" width="400" height="400"></img></p>
+
+				Currently the keypad is responding to only a couple (incorrect) buttons being pressed and the LCD display is not turning on at tall. Today I spent substantial time investigating the keypad for possible sources of error with some help from Garrett. Eventually, it became apparent that the rows and columns were switched and needed to be changed in both the code and in the connections. This was because in the first setup, the rows were identifying button pushes instead of the columns, to provide input to the ESP32. To fix this, I adjusted the GPIO values on Garrett’s computer, then built and sent myself the zipped file to flash on my own computer. This still had only a couple of buttons being identified, however Garrett and I both believe it to be a result of the additional pull down resistors on a couple of the rows. So, I desoldered the pull down resistors, but did not have enough time to test it without them – this will be first on the list of things to do for next week. <br><br>
+				Finally, early this week our clear gameboard covers for the Grid PCBs were cut and I was able to pick them up. They were not cut with the specific acrylic we had purchased which means the thickness is slightly off and it is much more clear than expected, however it still looks very clean. Next week I will be returning to the machine shop to ask for another cut (without the socket holes) for the top boards. <br>
+
+				<p><img src="Team/progress/molly/wk14/IMG_5378.gif" width="350" height="400"></img></p>
+
+				Overall, this week was still pretty productive, regardless of the break. Moving forward, the pressure to get the ESP32 programmed correctly is significant, however I believe our team will rise to the occasion. <br>
+
+				<br>
+				</p>
+			</div> 
 
 
 
