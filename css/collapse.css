@@ -1,7 +1,7 @@
 :root {
-  --collapse-color-bg-light: hsl(220, 50%, 70%);
-  --collapse-color-bg-dark: hsl(220, 50%, 60%, 60%);
-  --collapse-color-text: hsl(220, 50%, 20%);
+  --collapse-color-bg-light: hsl(220, 90%, 70%);
+  --collapse-color-bg-dark: hsl(220, 90%, 60%);
+  --collapse-color-text: hsl(220, 90%, 30%);
 }
 
 /* Style the button that is used to open and close the collapsible content */
